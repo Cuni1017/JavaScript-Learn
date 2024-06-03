@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js19">
+        <input type="button" value="開始" id="start">
+        <input type="button" value="停止" id="stop">
+        <img src="image/TOM/02-汤姆猫.png" alt="" id="TOM" style="width: 300px">
+        
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+        var timer = null
+        var index = 0
+
+        $('start').onclick = function(){
+            if(timer == null){
+                timer = setInterval(changeView,100)
+            }
+            // console.log(1)
+        }
+        $('stop').onclick = function(){
+            clearInterval(timer)
+            timer = null
+            // console.log(2)
+        }
+        function changeView(){
+            index++;
+            if(index > 25){
+                index = 0
+            }
+            $('TOM').src = "image/TOM/angry/angry_" + format(index,2)+ ".jpg"
+        }
+        function format(index,num){
+            var str = index.toString();
+            while(str.length != num){
+                str = '0' + str
+            }
+            return str;
+        }
+    </script>
+</body>
+</html>

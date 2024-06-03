@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="box" style="width: 100px;  height: 100px"></div>
+    <p id="text" style="font-size: 30px;">123</p>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+    oBox = document.getElementById("box")
+    oText = document.getElementById("text")
+    // oBox.onclick = function(){
+    //     oText.innerHTML = "單擊"
+    // }
+    // oBox.ondblclick = function(){
+    //     oText.innerHTML = "雙擊"
+    // }
+    oBox.onmousedown = function(){
+        oText.innerHTML = "按下"
+    }
+    oBox.onmouseup = function(){
+        oText.innerHTML = "釋放"
+    }
+    oBox.onmouseover = function(){
+        oText.innerHTML = "移入"
+    }
+    oBox.onmouseout = function(){
+        oText.innerHTML = "移出"
+    }
+    var count=0;
+    oBox.onmousemove = function(){
+        oText.innerHTML = "在裡面移動 " + count
+        count++;
+    }
+    </script>
+</body>
+</html>

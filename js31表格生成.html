@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js31">
+        <input type="text" id="row" placeholder="行">
+        <input type="text" id="col" placeholder="列">
+        <input type="button" id="bt" value="生成">
+        <!-- <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table> -->
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能: 使用者輸入行列，創建表格 :隔行變色、刪除行按鈕
+    */
+    var oRow = document.getElementById('row')
+    var oCol = document.getElementById('col')
+    var oBt = document.getElementById('bt')
+
+    oBt.onclick = function(){
+        var _row = oRow.value
+        var _col = oCol.value
+
+        // 包在js31裡才吃的到css
+        _js31 = document.createElement('div')
+        _js31.id = "js31"
+        console.log(_js31)
+        document.body.appendChild(_js31)
+
+        // 表格
+        var _table = document.createElement('table')
+        _js31.appendChild(_table)
+        var _tbody = document.createElement('tbody')
+        _table.appendChild(_tbody)
+        // 添加行
+        for(var i=0;i<_row;i++){
+            var _tr = document.createElement('tr')
+            _tbody.appendChild(_tr)
+            // 單元格
+            for(var j=0;j<_col;j++){
+                _td = document.createElement('td')
+                _td.innerHTML = (i+1) + '-' + (j+1)
+                _tr.appendChild(_td)
+            }
+            // 隔行變色
+            if((i+1)%2==0){
+                _tr.style.backgroundColor = "purple"
+                _tr.style.color = "white"
+            }
+            // 刪除按鈕
+            var _deleteTd = document.createElement('div')
+            _tr.appendChild(_deleteTd)
+            var _deleteBt = document.createElement('input')
+            _deleteBt.type = "button"
+            _deleteBt.value = "刪除"
+            _deleteTd.appendChild(_deleteBt)
+            _deleteBt.onclick = function(){
+                /*
+                    this > _deleteBt
+                    this.parentNode > _deleteTd
+                    this.parentNode.parentNode > _tr
+                    this.parentNode.parentNode.parentNode > _tbody
+                */
+                // console.log(this.parentNode.parentNode.parentNode)
+                _tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="box" style="position: absolute"></div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        let oBox = document.getElementById('box')
+        oBox.onmousedown = function(ev){
+            ev = event || ev
+            // 保存鼠標相對於元素的位置
+            let downX = ev.offsetX
+            let downY = ev.offsetY
+            alert(downX +"Y:"+ downY)
+            // 鼠標移動範圍是整個document
+            document.onmousemove = function(ev){
+                ev = event || ev
+                // 
+                oBox.style.left = ev.clientX - downX + "px"
+                oBox.style.top = ev.clientY - downY + "px"
+            }
+            document.onmouseup = function(){
+                document.onmousemove = document.onmouseup = null
+            }
+        }
+    </script>
+</body>
+</html>

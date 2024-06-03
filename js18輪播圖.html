@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js18">
+        <img src="image/cat1.jpg" alt="" id="img" width="300px">
+        <p id="pageView">
+            <i class="active"></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </p>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+        var oImg = $("img")
+        var aPage = document.getElementsByTagName("i")
+        var timer = null
+        var index = 0; //控制圖片
+        var imgName = ''; //圖片名
+        var currentPage = 0
+
+        startTimer()
+
+        for(var i=0;i<aPage.length;i++){
+            aPage[i].index=i
+            aPage[i].onclick = function(){
+                // 關閉時鐘
+                stopTimer()
+                // 根據下標切換
+                index = this.index
+                changeView()
+                // 開啟時鐘
+                startTimer()
+            }
+        }
+
+        // 開啟時鐘
+        function startTimer(){
+            if(timer==null)
+                timer = setInterval(upDate,2000);
+        }
+        function stopTimer(){
+            clearInterval(timer)
+            timer = null
+        }
+        function upDate(){
+            index++
+            changeView()
+        }
+        function changeView(){
+            if(index > 4)
+                index = 0
+                // console.log(index)
+            // 改變圖片
+            imgName = "image/cat" + (index+1) + ".jpg"
+            oImg.src = imgName
+            // 改變頁碼
+            aPage[currentPage].className = ''
+            currentPage = index
+            aPage[currentPage].className = 'active'
+        }
+    </script>
+</body>
+</html>

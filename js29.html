@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="radio" name="sex">男
+    <input type="radio" name="sex">女
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+    window.onload = function(){
+        var aSex = document.getElementsByName("sex")
+        // console.log(aSex)
+        document.onclick = function(){
+            // alert(aSex[1].checked)
+        }
+    }
+    </script>
+</body>
+</html>

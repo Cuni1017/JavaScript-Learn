@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="button" id="btn+" value="+" class="btn">
+    <input type="button" id="btn-" value="-" class="btn">
+    <br>
+    <input type="text" id="numText" value="0">
+    <p id="content" style="font-size: 0;">傻逼</p>
+    <script>
+    /*
+        功能: 兩個按鈕控制文字的大小
+    */
+        var oadd = document.getElementById("btn+")
+        var ominus = document.getElementById("btn-")
+        var oText = document.getElementById("numText")
+        var oContent = document.getElementById("content")
+        
+        // 默認
+        var num=0; 
+        oadd.onclick = function(){
+            // alert("+")
+            num++; 
+            oText.value = num;
+            oContent.style.fontSize = num + "px";
+        }
+
+        ominus.onclick = function(){
+            // alert("-")
+            num--;
+            oText.value = num;
+            oContent.style.fontSize = num + "px";
+        }
+
+    </script>
+</body>
+</html>

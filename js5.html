@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="text" placeholder="請輸入姓名" id="name">
+    <input type="button" value="輸入完成" id="btn">
+    <!-- 
+        功能: 有一個輸入框,一個按鈕,點擊按鈕,輸出"hello" + 輸入框內容
+    -->
+    <script>
+        //獲取元素
+        var oText = document.getElementById("name");
+        var obtn = document.getElementById('btn');
+        //點擊事件
+        obtn.onclick = function(){
+            // document.write(oText.textContent);
+            //獲取輸入框中的內容
+            alert("Hello "+ oText.value)
+        }
+    </script>
+</body>
+</html>

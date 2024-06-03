@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js40">
+    <table>
+            <tr>
+                <td>1.單元格</td>
+                <td>2.單元格</td>
+                <td>3.單元格</td>
+                <td>4.單元格</td>
+            </tr>
+            <tr>
+                <td>1.單元格</td>
+                <td>2.單元格</td>
+                <td>3.單元格</td>
+                <td>4.單元格</td>
+            </tr>
+            <tr>
+                <td>1.單元格</td>
+                <td>2.單元格</td>
+                <td>3.單元格</td>
+                <td>4.單元格</td>
+            </tr>
+            <tr>
+                <td>1.單元格</td>
+                <td>2.單元格</td>
+                <td>3.單元格</td>
+                <td>4.單元格</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:雙擊單元格後可修改裡面文字
+    */
+        let oTable = document.getElementsByTagName('table')[0]
+        oTable.ondblclick = function(ev){
+            // 找事件源
+            ev = event || ev
+            let self = ev.target || ev.srcElement
+            if(self.nodeName != "TD") return //阻止點到table
+            // 將事件源td的innerHTML 替換成 input
+            let oInput = document.createElement('input')
+            oInput.type = "text"
+            oInput.value = self.innerHTML
+            self.innerHTML = ""
+            self.appendChild(oInput)
+            oInput.focus()
+
+            // 阻止事件冒泡
+            ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true
+            document.onclick = function(){
+                // 將輸入框的內容保存到對應的td中
+                self.innerHTML = oInput.value
+            }
+        }
+    </script>
+</body>
+</html>

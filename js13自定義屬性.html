@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="box" style="width: 100px ">123</div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能: 自定義屬性 
+    */
+    
+    var oBox = document.getElementById('box')
+
+    oBox.img = "1.png"
+    oBox.desc = "描述訊息"
+
+    document.onclick = function(){
+        alert(oBox.img)
+        alert(oBox.desc)
+        alert(oBox.style.color) //若屬性是link過來的,在js會讀不到  如果在html有寫就可以
+    }
+    </script>
+</body>
+</html>

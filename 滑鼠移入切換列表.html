@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js14HW">
+        <div class="nav">
+            <h2 class="active14HW">點擊排行</h2>
+            <h2>觀看排行</h2>
+            <h2>分享排行</h2>
+        </div>
+        <div class="content">
+            <ul class="L">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+            <ul class="L" style="display: none;">
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </ul>
+            <ul class="L" style="display: none;">
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:滑鼠移入時切換內容列表
+    */
+        var Nav = document.getElementsByClassName("nav")[0]
+        var oCon = document.getElementsByClassName("content")[0]
+        // console.log(oCon)
+        var aul = oCon.getElementsByTagName("ul")
+        // console.log(aul)
+        // console.log(Nav)
+        var aH2 = Nav.getElementsByTagName("h2")
+        // console.log(oH2)
+
+        var currentoH2 = aH2[0]
+        for(var i=0;i<aH2.length;i++){
+            aH2[i].attr=i
+            aH2[i].onmouseover = function(){
+                currentoH2.className = ""
+                currentoH2 = this
+                // console.log(this.className)
+                this.className = "active14HW"
+                if(this.attr == 0){
+                    // console.log(0)
+                    aul[0].style.display = "block"
+                    aul[1].style.display = "none"
+                    aul[2].style.display = "none"
+                }
+                if(this.attr == 1){
+                    // console.log(1)
+                    aul[0].style.display = "none"
+                    aul[1].style.display = "block"
+                    aul[2].style.display = "none"
+                }
+                if(this.attr == 2){
+                    // console.log(2)
+                    aul[0].style.display = "none"
+                    aul[1].style.display = "none"
+                    aul[2].style.display = "block"
+                }
+                // console.log(this.attr)
+            }
+
+        }
+
+    </script>
+<!-- <script type="text/javascript" src="js1.js"></script> -->
+</body>
+</html>

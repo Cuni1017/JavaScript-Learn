@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="box"></div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+        var oBox = $('box')
+        /*
+            元素節點: <html>、<body>、<li>等都是元素節點，即標簽。
+            文本節點: 向用戶展示的內容，如<li>...</li>中的JavaScript、HTML/CSS、jQuery等文本。
+            屬性節點: 元素屬性，如<script>標簽的type="text/javascript"。
+            nodeName/nodeType/nodeValue
+            nodeType: 元素節點1 屬性節點2 文本節點3
+            nodeValue: 元素節點(null) 屬性節點(屬性值) 文本節點(文本內容)
+        */
+        console.log(oBox)
+        //元素節點
+        document.write(oBox.nodeName) // div
+        document.write(oBox.nodeType) // 1
+        document.write(oBox.nodeValue+"<br>") // null
+        
+        //屬性節點
+        var att = oBox.attributes[0] //oBox的屬性
+        console.log(att) // id="box"
+        document.write(att.nodeName) // id
+        document.write(att.nodeType) // 2
+        document.write(att.nodeValue) // box
+    </script>
+</body>
+</html>

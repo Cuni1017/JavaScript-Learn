@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="text" placeholder="Username" id="username"> <br>
+    <input type="password" placeholder="Password" id="password"> <br>
+    <input type="button" value="login" id="login" >
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        let oUsername = document.getElementById('username')
+        let oPassword = document.getElementById('password')
+        let oLogin = document.getElementById('login')
+        oUsername.onkeydown = function(ev){
+            ev = event || ev
+            console.log(ev.keyCode)
+            // keyCode == 13 (Enter)
+            if(ev.keyCode == 13){
+                oPassword.focus()
+            }
+        }
+        oPassword.onkeydown = function(ev){
+            ev = event || ev
+            console.log(ev.keyCode)
+            if(ev.keyCode == 13){
+                oUsername.focus()
+            }
+        }
+        oLogin.onclick = function login(){
+            alert("正在登入..")
+        }
+    </script>
+</body>
+</html>

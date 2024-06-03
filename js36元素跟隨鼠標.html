@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="box" style="position: absolute; left: 0px; top: 0px">
+
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            var oBox = document.getElementById('box')
+            /*
+                onclick(onmousedown + onmouseup)
+                obdbclick
+                onmousedown
+                onmouseup
+                onmousemove 移動
+                onmouseover 移入
+                onmouseout 移出
+                onfocus 獲取焦點
+                onblur 失去焦點
+            */
+            oBox.onmousedown =  function(){
+                document.onmousemove = function(){
+                    ev = window.event || ev;
+                    
+                    oBox.style.left = ev.clientX + "px"
+                    oBox.style.top = ev.clientY + "px"
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = null
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+    <style type="text/css">
+        html{height: 1500px;}
+        body{height: 1000px; width: 1500px;}
+        .View{margin: 30px; border-left: solid 3px; border-top: solid 5px;} 
+    </style>
+</head>
+<body>
+    <div class="View">123</div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        var i=0;
+        window.onresize = function(){
+            document.title = i++
+        }
+
+        window.onscroll = function(){
+            document.title = i++
+        }
+        
+        var oView = document.getElementsByClassName('View')[0]
+        console.log(document.documentElement)
+        console.log(oView)
+        document.onclick = function(){
+            console.log(document.documentElement.clientWidth)
+            console.log(document.documentElement.clientHeight)
+        }
+        oView.onclick = function(){
+            console.log(this.clientLeft) //返回他的borderLeft值
+            console.log(this.clientTop) //返回他的borderTop值
+        }
+    </script>
+</body>
+</html>

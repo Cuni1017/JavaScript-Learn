@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="button" id="start" value="開始">
+    <input type="button" id="stop"value="停止">
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 乘幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+    var index = 0;
+    var timer = null
+    $('start').onclick = function(){
+        /*  setInterval(函數,毫秒) 定時器: 重複操作
+            函數: 事件處理
+            毫秒: 間隔處理
+            返回值: 時鐘對象
+        */
+        if(timer == null) //判斷timer是否為空 不然會越來越快
+            timer = setInterval(speak,1000)
+    }
+    $('stop').onclick = function(){
+        clearInterval(timer) // 停止時間
+        timer = null ; // 重置timer
+    }
+
+    function speak(){
+        index++;
+        console.log(index)
+    }
+    </script>
+</body>
+</html>

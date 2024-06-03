@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js42">
+        <div class="view1">
+            <div class="view2">
+                <div class="view3">
+                    <div class="view4">
+                        <p> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            let oView1 = document.getElementsByClassName('view1')[0]
+            let oView2 = document.getElementsByClassName('view2')[0]
+            let oView3 = document.getElementsByClassName('view3')[0]
+            let oView4 = document.getElementsByClassName('view4')[0]
+            let oP = document.getElementsByTagName('p')[0]
+            function fn(){
+                oP.innerHTML = "1"
+            }
+            // 方式一
+            // oView1.onclick = fn
+            // 方式二 
+            // 最後一個參數 true為事件捕獲(從裡到外) false為事件冒泡(從外到裡)
+            // oView1.addEventListener('click',fn,false)
+            // 事件捕獲
+            oView1.addEventListener('click',function(){
+                alert("view1 --- 事件捕獲")
+            },true)
+            oView2.addEventListener('click',function(){
+                alert("view2 --- 事件捕獲")
+            },true)
+            oView3.addEventListener('click',function(){
+                alert("view3 --- 事件捕獲")
+            },true)
+            oView4.addEventListener('click',function(){
+                alert("view4 --- 事件捕獲")
+            },true)
+            // 事件冒泡
+            oView1.addEventListener('click',function(){
+                alert("view1 --- 事件冒泡")
+            },false)
+            oView2.addEventListener('click',function(){
+                alert("view2 --- 事件冒泡")
+            },false)
+            oView3.addEventListener('click',function(){
+                alert("view3 --- 事件冒泡")
+            },false)
+            oView4.addEventListener('click',function(){
+                alert("view4 --- 事件冒泡")
+            },false)
+            // 事件取消
+            // 方式一
+            oView4.onclick = null
+            // 方式二
+            oView4.removeEventListener('click',fn)
+        }
+        
+    </script>
+</body>
+</html>

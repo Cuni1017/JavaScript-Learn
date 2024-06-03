@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js15HW">
+        <div class="search">
+            <input type="text" id="search"> 
+            <input type="button" value="查找" id="btSearch"></input>
+        </div>
+        <div class="change">
+            <input type="text" id="change"> 
+            <input type="button" value="替換" id="btChange"></input>
+        </div>
+        <div class="content">劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。劉OO自以為自己是萊茵哈特，但他不是。 —— 他爺爺</div>
+        
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        var oContent = document.getElementsByClassName("content")[0] //內容
+        var oText1 = document.getElementById("search")
+        var oText2 = document.getElementById("change")
+        var oBtnS = document.getElementById("btSearch")
+        var oBtnC = document.getElementById("btChange")
+        // console.log(oText1)
+
+        // 保存數據
+        var content = oContent.innerHTML
+        oBtnS.onclick = function(){
+            var searchValue = oText1.value
+            console.log(searchValue)
+            // 恢復原樣
+            oContent.innerHTML = content
+            // 沒輸入任何內容
+            if(!searchValue) return
+
+            // 用元素包裹住searchValue => span
+            var str = "<span>" + searchValue + "</span>"
+            oContent.innerHTML = oContent.innerHTML.split(searchValue).join(str)
+        }
+        oBtnC.onclick = function(){
+            var oldStr = oText1.value
+            var newStr = oText2.value
+
+            if(!oldStr || !newStr) return
+
+            oContent.innerHTML = content.split(oldStr).join(newStr)
+        }
+
+/*
+        var oContent = document.getElementsByClassName("content")[0] //內容
+        // console.log(oContent)
+        var oSearch = document.getElementsByClassName("search")[0] //div
+        var oChange = document.getElementsByClassName("change")[0]
+        // console.log(oSearch)
+        // console.log(oChange)
+        var oSearchText = oSearch.getElementsByTagName("input")[0] //div裡的input
+        var oChangeText = oChange.getElementsByTagName("input")[0]
+        console.log(oSearchText.value)
+        var oBtnSerach = oSearch.getElementsByClassName("serachbtn")[0] //div裡的按鈕
+        var oBtnChange = oChange.getElementsByClassName("changebtn")[0]
+        // console.log(oBtnSerach)
+        
+        var str = oContent.innerHTML
+        // console.log(str)
+        oBtnSerach.onclick = function(){
+            // alert("S")
+            var oSearchText = oSearch.getElementsByTagName("input")[0]
+            var searchStr = oSearchText.value
+
+
+            console.log(searchStr)
+
+        }
+        oBtnChange.onclick = function(){
+            // alert("C")
+            var oChangeText = oChange.getElementsByTagName("input")[0]
+        }
+*/
+
+        
+
+    </script>
+<!-- js裡面不能添加js代碼 -> <script> -->
+<!-- <script type="text/javascript" src="js1.js"></script> -->
+</body>
+</html>

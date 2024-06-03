@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="button" value="打開" id="btOpen">
+    <input type="button" value="關閉" id="btClose">
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+    obtOpen = document.getElementById('btOpen')
+    obtClose = document.getElementById('btClose')
+    var oWindow = null
+    obtOpen.onclick = function(){
+        oWindow = window.open('https://www.google.com/')
+    }
+    obtClose.onclick = function(){
+        oWindow.close()
+    }
+    // 
+    console.log(window.navigator.userAgent)
+
+    if(window.navigator.userAgent.indexOf('Firefox') != -1){
+        alert("Firefox")
+    } else if(window.navigator.userAgent.indexOf('Edg')  != -1){
+        alert("Edge")
+    } else if(window.navigator.userAgent.indexOf('Chrome')  != -1){
+        alert("Chrome")
+    } else{
+        document.write("其他瀏覽器")
+    }
+
+    // url中?後面的內容
+    alert(window.location.search)
+    // url中#後面的內容
+    alert(window.location.hash)
+    // url
+    alert(window.location)
+    </script>
+</body>
+</html>

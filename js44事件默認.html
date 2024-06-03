@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js44">
+    <div class="Box" style="left: 0px; top: 0px"></div>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            let oBox = document.getElementsByClassName('Box')[0]
+            // 按下右鍵時
+            document.oncontextmenu = function(ev){
+                ev = event || ev
+                // 鼠標位置
+                oBox.style.display = "block"
+                oBox.style.left = ev.clientX + "px"
+                oBox.style.top = ev.clientY + "px"
+                // 禁止默認行為 (原本的右鍵功能)
+                // 方式一
+                // ev.preventDefault ? ev.preventDefault() : ev.returnValue = false
+                // 方式二
+                return false
+            }
+            document.onclick = function(){
+                oBox.style.display = "none"
+            }
+        }
+    </script>
+</body>
+</html>

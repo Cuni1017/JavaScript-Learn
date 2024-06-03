@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+    window.onload = function(){
+        // 方式一: 需重複創造div，較耗資源
+        // for(var i=0;i<100;i++){
+        //     var oImg = document.createElement('img')
+        //     oImg.style.width = "250px"
+        //     oImg.src = "image/money.jpg"
+        //     document.body.appendChild(oImg)
+        // }
+
+        // 方式二: 複製div
+        var oImg = document.createElement('img')
+        oImg.style.width = "250px"
+        oImg.src = "image/money.jpg"
+        var temp = null
+        for(var i=0;i<1000;i++){
+            temp = oImg.cloneNode()
+            document.body.appendChild(temp)
+        }
+    }
+    </script>
+</body>
+</html>

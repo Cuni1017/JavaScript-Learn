@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <ul id="test">
+        <li>1.哈哈</li>
+        <li>2.哈哈</li>
+        <li>3.哈哈</li>
+        <li>4.哈哈</li>
+    </ul>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+    window.onload = function(){
+        // 創建元素節點
+        var oTitle = document.createElement('h1')
+        // 設置元素節點
+        oTitle.innerHTML = "你好!"
+        // 添加元素至介面中->body
+        document.body.appendChild(oTitle)
+
+        var oA = document.createElement('a')
+        oA.href = "#"
+        oA.innerHTML = "連接"
+        // document.body.appendChild(oA) +在Body裡，與Title同級別
+        // oTitle.appendChild(oA) // +到Title裡面，與oTitle為父子關係
+
+        // 創建文本節點(顯示文本)
+        var oText = document.createTextNode('<h1>你好啊</h1>')
+        oTitle.appendChild(oText)
+
+        // insertBefore 將新節點插入到前面
+        var oLi = document.createElement('li')
+        oLi.innerHTML = "測試"
+        oView = document.getElementById('test')
+
+        // 在oView前面添加oLi
+        // console.log(oView.parentNode) // Body
+        // oView.parentNode.insertBefore(oLi,oView) //在body裡插入
+        // oView.insertBefore(oLi,oView.firstChild) //在ul裡的li前插入
+        
+        // 在oView後面加oLi
+        oView.appendChild(oLi)
+    }
+
+    </script>
+</body>
+</html>

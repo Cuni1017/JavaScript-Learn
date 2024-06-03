@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <!-- <ul>
+        <li><a href="#">北</a></li>
+        <li><a href="#">東</a></li>
+        <li><a href="#">南</a></li>
+        <li><a href="#">西</a></li>
+    </ul> -->
+    <script>
+        var a="北",b="東",c="南",d="西"
+
+        var list=""
+        list = list + "<ul>"
+        // 雙引號之間只能用單引號 或 單引號之間用雙引號
+        list += "<li> <a href='#'>" + a + "</a></li>"
+        list += "<li> <a href='#'>" + b + "</a></li>"
+        list += "<li> <a href='#'>" + c + "</a></li>"
+        list += "<li> <a href='#'>" + d + "</a></li>"
+        list = list + "</ul>"
+
+        // console.log(list)
+        document.write(list)
+    </script>
+</body>
+</html>

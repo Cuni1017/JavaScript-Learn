@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js39">
+        <div class="friend">
+                <input type="button" id="bt" value="功能">
+                <ul>
+                    <li>添加好友</li>
+                    <li>刪除好友</li>
+                    <li>更新好友名單</li>
+                </ul>
+        </div><br>
+        <div class="retweet">
+            <div class="social">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Discord</a>
+                <a href="#">Line</a>
+            </div>
+            <div class="title">分享到</div>
+        </div>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        // friend
+        let oBox =  document.getElementById('js39')
+        let oBt = document.getElementById('bt')
+        let oUl = document.getElementsByTagName('ul')[0]
+        let aLi = document.getElementsByTagName('li')
+        var isShow = null;
+        oBt.onclick = function(ev){
+            isShow = !isShow
+            oUl.style.display = isShow ? "block" : "none"
+            // 阻止事件冒泡
+            ev = window.event || ev
+            ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true
+        }
+        document.onclick = function(){
+            isShow = false
+            oUl.style.display = "none"
+        }
+
+        // retweet
+        let oRetweet = document.getElementsByClassName('retweet')[0]
+        let oTitle = document.getElementsByClassName('title')[0]
+        let oSocial = document.getElementsByClassName('social')[0]
+
+        oRetweet.onmousemove = function(){
+            oRetweet.style.left = "110px"
+        }
+        // oTitle.onmouseout = function(){
+        //     oSocial.style.left = "-110px"
+        //     this.style.left = "0px"
+        // }
+
+        oRetweet.onmouseout = function(){
+            oRetweet.style.left = "0px"
+        }
+
+    </script>
+</body>
+</html>

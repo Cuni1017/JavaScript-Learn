@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="button" id="btn+" value="+" class="btn">
+    <input type="button" id="btn-" value="-" class="btn">
+    <input type="button" id="btn*" value="*" class="btn">
+    <input type="button" id="btn/" value="/" class="btn">
+    <input type="button" id="btn%" value="%" class="btn">
+    <br>
+    <input type="text" id="numText1" value="">
+    <input type="text" id="numText2" value="">
+    <p id="numText">數值為:
+        <span id="total"></span>
+    </p>
+
+    <p id="content" style="font-size: 0;">傻逼</p>
+    <script>
+    /*
+        功能: 兩個使用者輸入的數值 點擊加減乘除的按鈕 輸出數值
+    */
+        var oadd = document.getElementById("btn+")
+        var ominus = document.getElementById("btn-")
+        var omultiply = document.getElementById("btn*")
+        var odivide = document.getElementById("btn/")
+        var omodulo = document.getElementById("btn%")
+
+        var oContent = document.getElementById("total")
+        var oText1 = document.getElementById("numText1")
+        var oText2 = document.getElementById("numText2")
+
+        // 默認
+        var total=0; 
+        //加
+        oadd.onclick = function(){
+            // Number() 轉換為數值
+            var num1 = Number(oText1.value)
+            var num2 = Number(oText2.value)
+            total = num1+num2
+            // alert("+")
+            oContent.innerHTML = total
+        }
+        //減
+        ominus.onclick = function(){
+            var num1 = Number(oText1.value)
+            var num2 = Number(oText2.value)
+            total = num1-num2
+            oContent.innerHTML = total
+        }
+        //乘
+        omultiply.onclick = function(){
+            var num1 = Number(oText1.value)
+            var num2 = Number(oText2.value)
+            total = num1*num2
+            oContent.innerHTML = total
+        }
+        //除
+        odivide.onclick = function(){
+            var num1 = Number(oText1.value)
+            var num2 = Number(oText2.value)
+            total = num1/num2
+            oContent.innerHTML = total
+        }
+        //取餘
+        omodulo.onclick = function(){
+            var num1 = Number(oText1.value)
+            var num2 = Number(oText2.value)
+            total = num1%num2
+            oContent.innerHTML = total
+        }
+
+    </script>
+</body>
+</html>

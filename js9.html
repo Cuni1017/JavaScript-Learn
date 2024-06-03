@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input type="text" id="score" placeholder="請輸入成績" style="width: 100px ; height: 30px">
+    <input type="button" id="getGradeBtn" value="確認" class="btn" style="position: absolute; top: -7px;">
+    <p id="text" >Grade</p>
+    <script>
+    /*
+        功能: 輸入成績,判斷等級
+        90~100: A 
+        80~89: B
+        ...
+        60以下: F
+    */
+    // var oScore = document.getElementById("score")
+    // var oGrade = document.getElementById("getGradeBtn")
+    
+    // oGrade.onclick = function(){
+    //     // alert("A");
+    //     if(Number(oScore.value)>=90){
+    //         alert("1")
+    //     }
+    // }
+    
+    var oScore = document.getElementById("score")
+    var oGrade = document.getElementById("getGradeBtn")
+    var oText = document.getElementById("text")
+    
+    // alert("Success");
+    oGrade.onclick = function(){
+        var num = oScore.value
+        if(num>100 || num<0){
+            oText.innerHTML = "WTF"
+        }else if(num>=90){
+            oText.innerHTML = "A"
+        }else if(num>=80){
+            oText.innerHTML = "B"
+        }else if(num>=70){
+            oText.innerHTML = "C"
+        }else if(num>=60){
+            oText.innerHTML = "D"
+        }else if(num<60 && num>0){
+            oText.innerHTML = "F"
+        }else{
+            oText.innerHTML = "WTF"
+        }
+    }
+    </script>
+</body>
+</html>

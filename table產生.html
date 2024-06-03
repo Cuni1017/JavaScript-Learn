@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <input id="row" type="text" placeholder="行" style="text-align: center;">
+    <input id="column" type="text" placeholder="列" style="text-align: center;">
+    <input type="button" id="btn" value="產生" >
+    
+    <div class="tableG">
+        <!-- <table>
+            <tr>
+                <td></td><td></td>
+            </tr>
+            <tr>
+                <td></td><td></td>
+            </tr>
+        </table> -->
+
+        <!-- table>tr>td -->
+    </div>
+
+    <script>
+    /*
+        功能: 讓使用者輸入後產生相對應行列數的table
+    */
+    oRow = document.getElementById("row")
+    oColumn = document.getElementById("column")
+    obutton = document.getElementById("btn")
+    var str = ""
+    obutton.onclick = function(){
+        var row = oRow.value;
+        var column = oColumn.value;
+        var table = '<table border="1" width="500" height="200" cellspacing="0">'
+        // alert(row)
+        // alert(column)
+        // alert(row*column)
+        // str += "<table><tr><td></td><td></td></tr>"
+        for(var i=1;i<=row;i++){
+            table += "<tr>"
+            for(var j=1;j<=column;j++){
+                table += "<td></td>"
+
+            }
+            table += "</tr>"
+        }
+        table += "</table>"
+        // // str += "<table><tr><td></td><td></td></tr></table>"
+        document.write(table)
+    }   
+    // var test = '<table border="1" width="300" height="200"><tr><td></td></tr></table>'
+    // document.write(test)
+    // str += "<table><tr><td></td><td></td></tr>"
+    // str += "</table>"
+    // document.write(str)
+    
+    // oNum
+    // alert(Number(oNum1.value))
+    </script>
+</body>
+</html>

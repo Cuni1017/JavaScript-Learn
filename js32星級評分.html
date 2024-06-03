@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js32">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p></p>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        aLi = document.getElementsByTagName('li')
+        var oInfo = document.getElementsByTagName('p')[0]
+        /*  保存評分下標
+            評分值0-4
+            只是初始化狀態，默認不是為0
+        */
+        var current = -1 //評分狀態預設
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index = i
+            // 鼠標移入
+            aLi[i].onmouseover = function(){
+                // 根據鼠標指的li位置，點亮以前的li 
+                // for(var j=0;j<=this.index;j++){
+                //     aLi[j].className = "active"
+                // }
+                
+                // 遍歷所有星星
+                for(var j=0;j<aLi.length;j++){
+                    if(j <= this.index){ // 點亮
+                        aLi[j].className = "active"
+                    } else { // 熄滅
+                        aLi[j].className = ""
+                    }
+                }
+            }
+            // 鼠標移出
+            aLi[i].onmouseout = function(){
+                // 沒評分: 所有的星星熄滅
+                // 有評分: 點擊的li前點亮
+                for(var j=0;j<aLi.length;j++){
+                    if(j <= current){
+                        aLi[j].className = "active"
+                    } else {
+                        aLi[j].className = ""
+                    }
+                }
+            }
+            // 鼠標點擊
+            aLi[i].onclick = function(){
+                current = this.index
+                oInfo.innerHTML = "評分: " + (current+1)
+            }
+        }
+    </script>
+</body>
+</html>

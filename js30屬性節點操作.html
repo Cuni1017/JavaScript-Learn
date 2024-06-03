@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <!-- data-name 自定義屬性 -->
+    <div id="box" class="section" data-index="0" data-isShow="True">
+        hello world
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script>
+    /*
+        功能:
+    */
+    var oBox = document.getElementById("box")
+    // 自定義屬性
+    oBox.index = 10;
+    console.log(oBox.index)
+
+    // 獲取屬性節點
+    var att = oBox.attributes
+    console.log(att['id'].nodeValue)
+    console.log(att['data-index'].nodeValue)
+
+    // 設置節點屬性
+    // oBox.style.color = "blue" //方式一
+    // setAttribute('AttrName','value')
+    oBox.setAttribute('style',"color:blue; background-color:black")
+    oBox.setAttribute('view','view1')
+    console.log(oBox.attributes['view'].nodeValue)
+    
+    // 刪除屬性
+    console.log(oBox.attributes['class'].nodeValue)
+    oBox.removeAttribute('class')
+    console.log(oBox.attributes['class'].nodeValue)
+    </script>
+</body>
+</html>

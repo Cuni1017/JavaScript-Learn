@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <ul>
+        <li class="section section1 section section">1.你好</li>
+        <li class="section section2">2.你好</li>
+        <li class="section section3 center">3.你好</li>
+        <li class="section section">4.你好</li>
+        <li class="section4">5.你好</li>
+        <li class="section6">6.你好</li>
+    </ul>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:getElementByClassName
+    */
+        // 系統的
+        // var aList = document.getElementsByClassName("section")
+        // for(var i=0;i<aList.length;i++){
+        //     aList[i].style.color = "red"
+        // }
+
+        // 自己封裝
+        var aList = getElementByClassName(document,'section','li');
+        for(var i=0; i<aList.length; i++){
+            aList[i].style.color = 'red';
+        }
+
+        /*
+            object: 要獲取該元素的子元素
+            className: 元素的class名
+            tagName: 標籤名
+        */
+
+        function getElementByClassName(object,className,tagName){
+            var aEle = object.getElementsByTagName(tagName)
+            var arr = []
+            for(var i=0;i<aEle.length;i++){
+                // if(aEle[i].className == className){
+                //     arr.push(aEle[i])
+                // }
+                // 將字符串以空格拆分 -> 數組(每個元素其實就是一個class名)
+                var names = aEle[i].className.split(' ')
+                // console.log(names)
+                // 遍歷class名稱
+                for(var j=0;j<names.length;j++){
+                    if(names[j] == className){
+                        arr.push(aEle[i]);
+                        break
+                    }
+                }
+            }
+            return arr
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,623 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  position: relative;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+#box {
+  background-color: red;
+  font-size: 35px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+#view {
+  background-color: blue;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.guessNumbox {
+  min-width: 320px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.guessNumbox input[type="text"] {
+  width: 100px;
+  height: 50px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.guessNumbox input[type="button"] {
+  width: 100px;
+  height: 30px;
+}
+
+#js10 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#js10 ul {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+#js10 li {
+  display: inline-flex;
+  border: solid 1px;
+  list-style: none;
+  width: 100px;
+  height: 100px;
+  text-decoration: none;
+  background-color: gray;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+#js10 a {
+  text-decoration: none;
+}
+
+#js10 p {
+  color: white;
+}
+
+#js10 .active {
+  background-color: red;
+}
+
+.tableG td {
+  border: solid 1px;
+  width: 100px;
+  height: 25px;
+  margin-left: 1px;
+}
+
+#js14 {
+  border: solid 1px;
+  width: 300px;
+  margin: 20px;
+}
+
+#js14 h3 {
+  margin: 0px;
+  background-color: #2eeb92;
+  border: solid 1px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+#js14 h3 span {
+  font-size: 16px;
+}
+
+#js14 h3 .expand {
+  opacity: 0.5;
+  margin-right: 5px;
+}
+
+#js14 ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+#js14 ul li {
+  padding-left: 20px;
+  list-style: none;
+  line-height: 30px;
+  border: solid 1px;
+}
+
+.active14 {
+  background: purple;
+}
+
+#js14HW {
+  border: solid 1px;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  margin-top: 100px;
+  position: relative;
+}
+
+#js14HW .nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#js14HW .nav h2 {
+  flex: 1;
+  border: solid 1px;
+  padding: 30px;
+  text-align: center;
+  margin: 0;
+}
+
+#js14HW .nav .active14HW {
+  background-color: #ddd;
+}
+
+#js14HW .content ul li {
+  font-size: 30px;
+  list-style: none;
+}
+
+#js15 {
+  border: solid 1px;
+  width: 300px;
+}
+
+#js15 a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#js15HW {
+  margin: 10px;
+}
+
+#js15HW input[type="text"] {
+  width: 200px;
+  height: 30px;
+  margin: 5px;
+}
+
+#js15HW .content span {
+  background-color: blue;
+  color: white;
+}
+
+#js16 .box {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+
+#js18 {
+  display: inline-block;
+  position: relative;
+}
+
+#js18 #pageView {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+#js18 #pageView i {
+  border: solid 2px gray;
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+#js18 #pageView .active {
+  background-color: black;
+}
+
+#js19 input {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+#js19 #TOM {
+  display: block;
+  margin-top: 5px;
+}
+
+#js21 i {
+  margin: 10px;
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 10px;
+}
+
+#TOM {
+  display: inline-block;
+  position: relative;
+}
+
+#TOM .bt {
+  position: absolute;
+}
+
+#TOM .btn1 {
+  left: 5px;
+  bottom: 135px;
+}
+
+#TOM .btn2 {
+  left: 5px;
+  bottom: 65px;
+}
+
+#TOM .btn3 {
+  left: 5px;
+  bottom: 5px;
+}
+
+#TOM .btn4 {
+  right: 5px;
+  bottom: 135px;
+}
+
+#TOM .btn5 {
+  right: 5px;
+  bottom: 65px;
+}
+
+#TOM .btn6 {
+  right: 5px;
+  bottom: 5px;
+}
+
+#js23 ul {
+  padding: 0px;
+  margin: 10px;
+  height: 40px;
+  display: inline-block;
+  background-color: gray;
+}
+
+#js23 li {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#js23 li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+#js23 .content {
+  display: none;
+  background-color: blue;
+}
+
+#js23 .content a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 5px;
+  border-bottom: solid 1px;
+}
+
+#js23 .active {
+  background-color: red;
+}
+
+#js27 {
+  display: inline-block;
+  border: solid 1px;
+  width: 300px;
+  height: 500px;
+  overflow: auto;
+}
+
+#js27 .section {
+  border-bottom: solid 1px;
+}
+
+#js27 .section a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+#js27 .section a img {
+  margin-right: 10px;
+}
+
+#js27 .section p {
+  display: block;
+}
+
+#js31 table {
+  width: 800px;
+  height: 400px;
+  border: solid 1px gray;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+#js31 table tr {
+  background-color: gray;
+}
+
+#js31 table td {
+  width: 300px;
+  border: solid 1px;
+}
+
+#js32 ul {
+  list-style: none;
+  width: 151px;
+  height: 27px;
+  margin: 30px;
+  padding: 0px;
+}
+
+#js32 ul li {
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  background: url(../../image/star.gif);
+}
+
+#js32 .active {
+  background-position-y: -29px;
+}
+
+#js37 #view1 {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+}
+
+#js37 #view2 {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+
+#js37 #view3 {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+}
+
+#js38 {
+  width: 150px;
+  margin: 30px auto;
+}
+
+#js38 input {
+  width: 145px;
+  height: 20px;
+}
+
+#js38 ul {
+  width: 150px;
+  border: solid 1px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+#js38 ul li {
+  padding: 5px;
+  margin: 0;
+}
+
+#js38 ul .active {
+  background-color: #ddd;
+}
+
+#js39 .friend {
+  margin: 20px;
+  padding: 0;
+  border: solid 1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#js39 .friend input[type="button"] {
+  width: 128px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#js39 .friend ul {
+  border: solid 1px;
+  list-style: none;
+  margin: 0px;
+  padding: 10px;
+  display: none;
+}
+
+#js39 .friend ul li {
+  text-align: center;
+  margin: 0px;
+  padding: 5px;
+}
+
+#js39 .retweet {
+  position: absolute;
+  top: 300px;
+  display: flex;
+  align-items: center;
+}
+
+#js39 .retweet .title {
+  width: 30px;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  background-color: black;
+  color: white;
+}
+
+#js39 .retweet .social {
+  display: block;
+  text-align: center;
+  width: 100px;
+  padding: 5px;
+  background-color: blue;
+  position: absolute;
+  left: -110px;
+}
+
+#js39 .retweet .social a {
+  width: 100%;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+#js40 table {
+  border: solid 1px;
+  width: 700px;
+  height: 300px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#js40 table td {
+  width: 140px;
+  height: 50px;
+  border: solid 1px;
+}
+
+#js40 table input {
+  width: 140px;
+  height: 50px;
+  border: 0px;
+  background-color: yellow;
+  font-size: 18px;
+  opacity: .6;
+}
+
+#js41 {
+  height: 400px;
+  background-color: black;
+  color: white;
+  border: solid 1px white;
+  text-align: center;
+}
+
+#js41 h3 {
+  text-align: left;
+  width: 200px;
+  border: solid 1px white;
+  font-size: 30px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+#js41 ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+  cursor: pointer;
+}
+
+#js41 ul li {
+  line-height: 30px;
+  margin: 0px;
+  padding: 5px;
+  font-size: 20px;
+  width: 190px;
+  border: dashed 1px;
+}
+
+#js41 .active {
+  background-color: gray;
+}
+
+#js42 p {
+  margin: 0px;
+}
+
+#js42 .view1 {
+  width: 400px;
+  height: 400px;
+  background-color: red;
+}
+
+#js42 .view2 {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+}
+
+#js42 .view3 {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+}
+
+#js42 .view4 {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+
+#js44 .Box {
+  position: absolute;
+  display: none;
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  border: solid 1px red;
+}
+
+#js46 {
+  width: 300px;
+  height: 150px;
+  border: solid 1px white;
+  border-radius: 12px;
+  color: white;
+  position: absolute;
+}
+
+#js46 h3 {
+  padding: 0px;
+  margin: 0px;
+  text-align: right;
+  padding-right: 10px;
+  border-bottom: solid 1px;
+  font-size: 26px;
+}
+
+#js46 p {
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+/*# sourceMappingURL=style.css.map */

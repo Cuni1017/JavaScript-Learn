@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+
+<body>
+    <div id="js14">
+        <div class="section">
+            <!-- 分組標題 -->
+            <h3><span class="expand" style="transform: rotate(90deg);">▶</span> 我的好友 <span>(3/10)</span></h3>
+            <!-- 分組好友 -->
+            <ul>
+                <li>我的好友1</li>
+                <li>我的好友2</li>
+                <li>我的好友3</li>
+                <li>我的好友4</li>
+                <li>我的好友5</li>
+                <li>我的好友6</li>
+                <li>我的好友7</li>
+            </ul>
+        </div>
+        <div class="section">
+            <!-- 分組標題 -->
+            <h3><span class="expand" style="transform: rotate(90deg);">▶</span> 同學 <span>(4/10)</span></h3>
+            <!-- 分組好友 -->
+            <ul>
+                <li>我的好友1</li>
+                <li>我的好友2</li>
+                <li>我的好友3</li>
+                <li>我的好友4</li>
+                <li>我的好友5</li>
+                <li>我的好友6</li>
+                <li>我的好友7</li>
+            </ul>
+        </div>
+        <div class="section">
+            <!-- 分組標題 -->
+            <h3><span class="expand" style="transform: rotate(90deg);">▶</span> 親友 <span>(5/10)</span></h3>
+            <!-- 分組好友 -->
+            <ul>
+                <li class="active14">我的好友1</li>
+                <li>我的好友2</li>
+                <li>我的好友3</li>
+                <li>我的好友4</li>
+                <li>我的好友5</li>
+                <li>我的好友6</li>
+                <li>我的好友7</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+
+    <script>
+        /*
+            功能:
+        */
+        var oFBox = document.getElementById('js14')
+        console.log(12)
+        console.log(oFBox)
+        var aSection = oFBox.getElementsByClassName("section")
+        // var aSection = oFBox.getElementsByTagName('div')
+
+        // 給每個分組中的標題添加點擊操作
+        for (var i = 0; i < aSection.length; i++) {
+            // 獲取到對應的標題元素
+            var oTitle = aSection[i].getElementsByTagName('h3')[0]
+
+            // console.log(oTitle)
+            // 默認是展開
+            oTitle.isShow = true
+            // 自定義屬性,各別分配每個h3一個編號 => 0>1>2
+            oTitle.index = i;
+            // 點擊事件
+            oTitle.onclick = function () {
+                // 改變狀態               ***i=3
+                this.isShow = !this.isShow
+                // console.log(this.isShow)
+                // 改變對應樣式
+                // console.log(this.index) 
+                var oExpand = aSection[this.index].getElementsByClassName("expand")[0]
+                // console.log(oExpand)
+                var oLists = aSection[this.index].getElementsByTagName('ul')[0]
+                if (this.isShow) { //展開
+                    oLists.style.display = 'block'
+                    oExpand.style.transform = "rotate(90deg)"
+
+                } else { //摺疊
+                    oLists.style.display = 'none'
+                    oExpand.style.transform = ""
+                }
+            }
+            //獲取每個分組, 給每個分組下的li添加點擊操作
+            var aFriend = aSection[i].getElementsByTagName('li')
+            console.log(aFriend)
+            for (var j = 0; j < aFriend.length; j++) {
+                aFriend[j].onclick = function () {
+                    // console.log("click")
+                    // 方法一 取消所選取的 => 清空全部的active樣式
+                    for (var k = 0; k < aSection.length; k++) {
+                        // 對應分組下的li
+                        var aTemp = aSection[k].getElementsByTagName('li');
+
+                        for (var y = 0; y < aTemp.length; y++) {
+                            aTemp[y].className = ""
+                        }
+                    }
+                    // 添加選中樣式
+                    this.className = "active14"
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

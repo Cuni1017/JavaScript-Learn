@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js16">
+        <div class="box"></div>
+        <input type="button" value="按鈕">
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:抓div的style
+    */
+    var oBox = document.getElementsByClassName("box")[0]
+    var oBtn = document.getElementsByTagName("input")[0]
+
+        // console.log(1)
+    // IE : item.currentStyle.height
+    oBtn.onclick = function(){
+        var width = ''
+        if(window.getComputedStyle){ //非IE
+            var style = getComputedStyle(oBox)
+            width = style.width
+        }else{ //IE
+            width = oBox.currentStyle.width
+        }
+        // console.log(width)
+        
+        // 函數封裝
+        var width = getStyle(oBox,'background-color');
+        alert(width)
+    }
+    
+    function getStyle(object,att){
+        if(window.getComputedStyle){ //非IE
+            return getComputedStyle(object)[att]
+        }else{ //IE
+            return object.currentStyle[att]
+        }
+        console.log(width)
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="TOM">
+        <img src="image/TOM/angry/angry_00.jpg" alt="" style="width: 300px">
+        <a href="#" class="bt btn1"><img src="image/TOM/Buttons/cymbal.png"/></a>
+        <a href="#" class="bt btn2"><img src="image/TOM/Buttons/drink.png"/></a>
+        <a href="#" class="bt btn3"><img src="image/TOM/Buttons/eat.png"/></a>
+        <a href="#" class="bt btn4"><img src="image/TOM/Buttons/fart.png"/></a>
+        <a href="#" class="bt btn5"><img src="image/TOM/Buttons/pie.png"/></a>
+        <a href="#" class="bt btn6"><img src="image/TOM/Buttons/scratch.png"/></a>
+    </div>
+
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:每個按鈕不同輪播圖
+    */
+        var oImg = $('TOM').getElementsByTagName('img')[0]
+        var aBt = $('TOM').getElementsByTagName('a')
+        var timer = null
+        var page = 0
+        var currentBt = null
+
+        // 圖片張數
+        var arr1 = [12,80,39,27,23,55];
+        // 圖片前綴
+        var arr2 = ['cymbal','drink','eat','fart','pie','scratch']
+
+        for(var i=0;i<aBt.length;i++){
+            aBt[i].index = i
+            aBt[i].onclick = function(){
+                // 先停止時鐘
+                stopTimer()
+                // 哪個按鈕點擊
+                currentBt = this
+                // 開始時鐘
+                startTimer()
+            }
+        }
+
+        function startTimer(){
+            if(timer == null){
+                timer = setInterval(upDate,100)
+            }
+        }
+        // 停止時鐘
+        function stopTimer(){
+            clearInterval(timer);
+            timer = null
+        }
+        // 時鐘事件
+        function upDate(){
+            page++
+            changeView()
+        }
+        function changeView(){
+            // 圖片張數
+            if(page > arr1[currentBt.index]){
+                page=0
+                stopTimer()
+            }
+
+            // 圖片名稱
+            oImg.src = "image/TOM/" + arr2[currentBt.index] + "/" +
+            arr2[currentBt.index] + "_" +format(page,2) + ".jpg"
+        }
+
+        // 圖片檔名格式化
+        function format(index,num){
+            var str = index.toString();
+            while(str.length != num){
+                str = '0' + str
+            }
+            return str;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能: 排序array
+    */
+    var array1 = [12,13,8,7];
+    var array2 = [12,13,8,7];
+    var i=j=temp1=temp2=0;
+    // 插入排序
+    for( i=1;i<array1.length;i++){ // 1 2 3 => 2 8 7
+        temp1 = array1[i];
+        for(j=i-1;j>=0;j--){ //0 1 2 => 14 2 8
+            if(temp1 > array1[j]){
+                break;
+            }else{
+                array1[j+1] = array1[j];
+            }
+        }
+        array1[j+1] = temp1;
+    }
+
+    //冒泡排序
+    for(i=0;i<array2.length-1;i++){
+        // 走了多少趟
+        for(j=0;j<array2.length-1-i;j++){
+            if(array2[j] > array2[j+1]){
+                temp2 = array2[j];
+                array2[j] = array2[j+1]
+                array2[j+1] = temp2;
+            }
+        }
+    }
+
+    document.write(array1 + "<br>")
+    document.write(array2)
+    
+
+    /*14 > 2{
+        te=2;
+    }
+
+    */
+    // function ()
+
+    // document.write(array);
+    </script>
+<!-- js裡面不能添加js代碼 -> <script> -->
+<!-- <script type="text/javascript" src="js1.js"></script> -->
+</body>
+</html>

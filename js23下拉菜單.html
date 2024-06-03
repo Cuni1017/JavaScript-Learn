@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js23">
+        <ul>
+            <li>
+                <a href="#" class="title">首頁</a>
+                <div class="content">
+                    <a href="#">首頁1</a>
+                    <a href="#">首頁2</a>
+                    <a href="#">首頁3</a>
+                    <a href="#">首頁4</a>
+                    <a href="#">首頁5</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="title">聯繫</a>
+                <div class="content">
+                    <a href="#">聯繫1</a>
+                    <a href="#">聯繫2</a>
+                    <a href="#">聯繫3</a>
+                    <a href="#">聯繫4</a>
+                    <a href="#">聯繫5</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="title">案例</a>
+                <div class="content">
+                    <a href="#">案例1</a>
+                    <a href="#">案例2</a>
+                    <a href="#">案例3</a>
+                    <a href="#">案例4</a>
+                    <a href="#">案例5</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="title">關於</a>
+                <div class="content">
+                    <a href="#">關於1</a>
+                    <a href="#">關於2</a>
+                    <a href="#">關於3</a>
+                    <a href="#">關於4</a>
+                    <a href="#">關於5</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+
+    var aLi = document.getElementsByTagName('li')
+    console.log(aLi)
+    var currentLi = null
+    var currentCt = null
+
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].onmouseover = function(){
+            this.className = "active"
+
+            // 獲取標題下的內容
+            // currentCt = this.getElementsByTagName("div")[0]
+            this.getElementsByTagName("div")[0].style.display = "block"
+        }
+        aLi[i].onmouseout = function(){
+            this.className = "none"
+
+            // 獲取標題下的內容
+            // currentCt = this.getElementsByTagName("div")[0]
+            this.getElementsByTagName("div")[0].style.display = "none"
+        }
+    }
+    </script>
+</body>
+</html>

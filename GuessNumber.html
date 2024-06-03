@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div class="guessNumbox">
+        <h1>猜數字遊戲</h1>
+        <h3>現在已生成一個1-100的數字,猜中有獎</h3>
+        <input type="text" id="GuessText"> <br>
+        <input type="button" id="Confirm" value="確認" class="btn">
+        <p id="UpperOrLower">大小</p>
+        <hr>
+        <p>答案:
+            <span id="Ans">?</span>
+        </p>
+        
+    </div>
+
+    <script>
+    /*
+        功能: 隨機產生一數值,讓使用者輸入後
+        產生一隨機數
+        Math.random() 產生0~1之間一隨機數 但不包含0與1
+        0~1 乘以100 => 0~100(不包含0~100)
+        parseInt 向下取整(無條件捨去) 99.5 => 99
+    */
+        // alert(parseInt(99.45))
+        var random = parseInt(Math.random()*100)
+        var oAns = document.getElementById("Ans")
+        var oGuess = document.getElementById("GuessText")
+        var oConfirm = document.getElementById("Confirm")
+        var oUpperOrLower = document.getElementById("UpperOrLower")
+
+        // alert(oGuess.value)
+        oAns.innerHTML = random
+        // var num = Number(oGuess.value)
+        oConfirm.onclick = function(){
+            var num = Number(oGuess.value)
+            // alert(num)
+            if(num<1 || num>100){
+                oUpperOrLower.innerHTML = "看好提示好嗎"
+            }else if(num==random){
+                oUpperOrLower.innerHTML = "答對了!"
+            }
+            else if(num>random){
+                oUpperOrLower.innerHTML = "再小一點"
+            }else if(num<random){
+                oUpperOrLower.innerHTML = "再大一點"
+            }else{
+                oUpperOrLower.innerHTML = "WTF"
+            }
+        }
+
+
+
+    </script>
+<!-- js裡面不能添加js代碼 -> <script> -->
+<!-- <script type="text/javascript" src="js1.js"></script> -->
+</body>
+</html>

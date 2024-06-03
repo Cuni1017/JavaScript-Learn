@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js38">
+        <input type="text" id="text" placeholder="請輸入要查找的內容">
+        <ul>
+            <li>HTML學習</li>
+            <li>HTML5</li>
+            <li>HTML5+</li>
+            <li>HTML5 MUI</li>
+            <li>HTML app開發</li>
+            <li>HTML 教學影片</li>
+            <li>HTML 教程</li>
+        </ul>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            var oInput = document.getElementById('text')
+            var aLi = document.getElementsByTagName('li')
+            var oUl = document.getElementsByTagName('ul')[0]
+
+            oInput.onfocus = function(){
+                oUl.style.display = "block"
+            }
+            oInput.onblur = function(){
+                // oUl.style.display = "none"
+                // 若太快失去焦點會抓不到點擊li的innerHTML
+                setTimeout(function(){
+                    oUl.style.display = "none"
+                },100)
+            }
+            // 方法一
+            // 添加點擊事件
+            // for(var i=0;i<aLi.length;i++){
+            //     aLi[i].onclick = function(){
+            //         oInput.value = this.innerHTML
+            //     }
+            // }
+
+            // 方法二
+            // 通過事件冒泡 >>> ul
+            oUl.onclick = function(ev){
+                // 通過事件源獲取哪個li點擊
+                ev = window.ev || ev
+                var self = ev.target || ev.srcElement
+                oInput.value = self.innerHTML
+            }
+        }
+    </script>
+</body>
+</html>

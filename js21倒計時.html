@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js21">
+        <i></i> : <i></i> : <i></i>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script src="zyz.js"></script>
+    <script>
+    /*
+        功能:
+    */
+    $(function(){
+        // 倒計時 = 結束時間 - 當前時間
+        var aI = document.getElementsByTagName('i')
+
+        setInterval(function(){
+            // 當前時間
+            var endTime = new Date()
+            var nowTime = new Date()
+
+            // 設置結束時間 6月9號12點整
+            endTime.setFullYear(2022)
+            endTime.setMonth(6)
+            endTime.setDate(12)
+            endTime.setHours(12)
+            endTime.setMinutes(0)
+            endTime.setSeconds(0)
+
+            // console.log(nowTime.getSeconds())
+            var s = parseInt(endTime.getSeconds()) - parseInt(nowTime.getSeconds())
+            var m = parseInt(endTime.getMinutes()) - parseInt(nowTime.getMinutes())
+            var h = parseInt(endTime.getHours()) - parseInt(nowTime.getHours())
+            console.log(endTime.getHours().)
+
+            aI[0].innerHTML = h;
+            aI[1].innerHTML = m;
+            aI[2].innerHTML = s;
+        },1000)
+    })
+    function getTimeRemaining(endtime){ 
+        const total = Date.parse(endtime) - Date.parse(new Date()); 
+        const seconds = Math.floor( (total/1000) % 60 ); 
+        const minutes = Math.floor( (total/1000/60) % 60 ); 
+        const hours = Math.floor( (total/(1000*60*60)) % 24 ); 
+        const days = Math.floor( total/(1000*60*60*24) ); 
+        
+        return { 
+            total, 
+            days, 
+            hours, 
+            minutes, 
+            seconds 
+        }; 
+    } 
+    const total = Date.parse(endtime) - Date.parse(new Date()); 
+    </script>
+</body>
+</html>

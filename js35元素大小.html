@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+    <style type="text/css">
+        #View{
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            margin-top: 50px;
+            padding: 10px;
+            background-color: red;
+            border: 5px solid;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="View">
+        hello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello world
+        <p> </p>
+    </div>
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+    var oView = document.getElementById('View')
+    var oP = document.getElementsByTagName('p')[0]
+    console.log(oView.style.width)
+    document.onclick = function(){
+        // 1. 通過style內連樣式獲取元素大小
+        // oP.innerHTML = "123" + oView.style.width //因為沒有設定 所以獲取不到
+
+        // 2. 通過計算獲取元素大小
+        var height = getComputedStyle(oView).height
+        console.log("oView_height: " + height)
+
+        // 3. client獲取元素可視化的區域 width+padding
+        console.log("oView_clientWidth: " + oView.clientWidth)
+
+        // 4. offsetWidth 獲取實際大小 即占位大小 width+padding+border
+        console.log("oView_offsetWidth: " + oView.offsetWidth)
+
+        // 5. 滾動內容的大小
+        console.log("oView_scrollHeight: " + oView.scrollHeight)
+        console.log("oView_scrollWidth: " + oView.scrollWidth)
+
+        // 6. clientLeft 元素左邊邊框大小
+        console.log("oView_clientLeft: " + oView.clientLeft) 
+        // 右邊邊框大小需要重新計算 -> oView.offsetWidth - oView.clientWidth - oView.clientLeft
+        console.log("oView_clientRight: " + (oView.offsetWidth - oView.clientWidth - oView.clientLeft).toString())
+        
+        // 7. 獲取父元素的位置
+        console.log("oView_offsetTop: " + oView.offsetTop)
+    }
+    </script>
+</body>
+</html>

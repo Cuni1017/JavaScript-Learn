@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js41">
+        <h3>夢幻西遊</h3>
+        <ul>
+            <li>大話西遊</li>
+            <li>夢幻西遊</li>
+            <li>熱血江湖</li>
+            <li>魔獸世界</li>
+            <li>英雄聯盟</li>
+        </ul>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    <script>
+    /*
+        功能:
+    */
+        let oTitle = document.getElementsByTagName('h3')[0]
+        let oContent = document.getElementsByTagName('ul')[0]
+        let isShow = false
+        let currentLi = null
+        oTitle.onclick = function(ev){
+            isShow = !isShow
+            oContent.style.display = isShow ? "flex" : "none"
+            ev = event || ev
+            ev.stopPropogation ? ev.stopPropogation() : ev.cancelBubble = true
+        }
+        oContent.onclick = function(ev){
+            ev = event || ev
+            let self = ev.target || ev.srcElement
+            // 點擊li部分時才替換
+            // console.log(self.tagName)
+            if(self.tagName == 'LI'){
+                oTitle.innerHTML = self.innerHTML
+            }
+        }
+        oContent.onmousemove = function(ev){
+            ev = event || ev
+            let self = ev.target || ev.srcElement
+            if(currentLi != null){
+                currentLi.className = ""
+            }
+            if(self.tagName == 'UL') return
+            currentLi = self
+            currentLi.className = "active"
+        }
+        document.onclick = function(){
+            isShow = false
+            oContent.style.display = "none"
+        }
+    </script>
+</body>
+</html>

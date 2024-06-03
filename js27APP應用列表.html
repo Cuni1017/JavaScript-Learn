@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js27">
+        <!-- <div class="section">
+            <a href="#">
+                <img src="image/APPicon/icon_00.png" alt="">
+                酷跑
+            </a>
+            <p>
+                好玩遊戲，每天要玩。好玩遊戲，每天要玩。好玩遊戲，每天要玩。好玩遊戲，每天要玩。
+            </p>
+        </div> -->
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            var oBox = document.getElementById("js27")
+            var oSection = null
+            var oName = null
+            var oHead = null
+            var oContent = null
+            var oText = null
+
+            // 廣告
+            var oAd = null
+
+            for(var i=0;i<12;i++){
+                // 插入廣告
+                if(i == 3){
+                    var oAd = document.createElement('div')
+                    oAd.className = "section"
+                    oBox.appendChild(oAd)
+
+                    oName = document.createElement('a')
+                    oName.href = "#"
+                    oAd.appendChild(oName)
+
+                    oText = document.createTextNode("廣告")
+                    oName.appendChild(oText)
+
+                    oContent = document.createElement('p')
+                    oContent.innerHTML = "走過路過別錯過"
+
+                    oAd.appendChild(oContent)
+                }
+
+                oSection = document.createElement('div')
+                oSection.className = 'section'
+                oBox.appendChild(oSection)
+
+                oName = document.createElement('a')
+                oName.href = "#"
+                oSection.appendChild(oName)
+
+                oHead = document.createElement('img')
+                oHead.src = "image/APPicon/icon_"+ format(i,2) +".png"
+                oName.appendChild(oHead)
+
+                oText = document.createTextNode((i+1)+".QQ應用")
+                oName.appendChild(oText)
+
+                oContent = document.createElement('p')
+                oContent.innerHTML = "好玩遊戲，每天要玩。好玩遊戲，每天要玩。好玩遊戲，每天要玩。好玩遊戲，每天要玩。"
+                oSection.appendChild(oContent)
+            }
+            setTimeout(function(){
+            oBox.removeChild(oAd)
+            },5000)
+        }
+        var oBox = document.getElementById("js27")
+        var aBoxNodes = oBox.childNodes
+        console.log(aBoxNodes)
+        for (i in aBoxNodes){
+            // console.log(oBox.childNodes[i].nodeValue)
+            console.log(i)
+        }
+        function format(index,num){
+            var str = index.toString();
+            while(str.length != num){
+                str = '0' + str 
+            }
+            return str;
+        }
+        // 設置定時器，刪除廣告
+    </script>
+</body>
+</html>

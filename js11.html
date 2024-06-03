@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+
+
+
+    <!-- 縮寫 
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+        ul*2>li*3>a[href="#"]+span[class="text"]{$}
+    -->
+    
+    <script>
+    /*
+        功能: 印出能被3或7整除的數 , 能被3和7整除的數
+    */
+    var num=101;
+    var str1='',str2='';
+    for(var i=100;i<=200;i++){
+        // if(i%3==0 || i%7==0){
+        //     document.write(i+"<br>")
+        // }
+        if(i % 3 == 0 || i % 7 == 0){
+            str1 += i.toString() + " ";
+        }
+    }
+    var i=100
+    while(i<=200){
+            if(i % 3 == 0 && i % 7 == 0){
+                str2 += i.toString() + " ";
+            }
+            i++
+    }
+    document.write("或:<br>"+str1)
+    document.write("<br>和:<br>"+str2)
+
+
+    </script>
+</body>
+</html>

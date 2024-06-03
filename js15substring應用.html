@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body>
+    <div id="js15">
+        <div class="content">
+            你知道為甚麼許多人做網拍乾你老師奈德利你知道為甚麼許多人做網拍乾你老師奈德利你知道為甚麼許多人做網拍乾你老師奈德利你知道為甚麼許多人做網拍乾你老師奈德利你知道為甚麼許多人做網拍乾你老師奈德利你知道為甚麼許多人做網拍乾你老師奈德利
+        </div>
+        <a href="#">收起</a>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        var oCon = document.getElementsByClassName("content")[0]
+        var oBt = document.getElementsByTagName("a")[0]
+        var str = oCon.innerHTML
+
+        // console.log(oCon)
+        // console.log(oBt)
+        // console.log(str)
+
+        oBt.isShow = true;
+
+        oBt.onclick = function(){
+            // console.log(oBt.isShow)
+            this.isShow = !this.isShow
+            if(this.isShow){ //展開
+                oCon.innerHTML = str
+                oBt.innerHTML = "收起"
+            }else{ //收起
+                oCon.innerHTML = oCon.innerHTML.substring(0,30) + "..."
+                oBt.innerHTML = "展開"
+            }
+        }
+    </script>
+</body>
+</html>

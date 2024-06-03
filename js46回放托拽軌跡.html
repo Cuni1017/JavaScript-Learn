@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/css/style.css">
+</head>
+<body style="background-color: black;">
+    <div id="js46">
+        <h3> <a href="#">回放托拽軌跡</a></h3>
+        <p>Drag: <i>false</i></p>
+        <p>offsetLeft: <i>0</i></p>
+        <p>offsetTop: <i>0</i></p>
+    </div>
+
+    <!-- 縮寫: ul*2>li*3>a[href="#"]+span[class="text"]{$}
+        * 有幾個, + 增加標籤, > 包裹, $ 數字遞增
+        [屬性], {內容}
+    -->
+    
+    <script>
+    /*
+        功能:
+    */
+        window.onload = function(){
+            let oBox = document.getElementById('js46')
+            let oMoveBar = document.getElementsByTagName('h3')[0]
+            let oBack  = document.getElementsByTagName('a')[0]
+            let aContent = document.getElementsByTagName('i')
+            // 保存座標位置
+            let arr = []
+            oMoveBar.onmousedown = function(ev){
+                // 保存鼠標相對於oMoveBar的位置
+                ev = event || ev
+                let downX = ev.offsetX
+                let downY = ev.offsetY
+                document.onmousemove = function(ev){
+                    ev = event || ev
+                    let _left = ev.clientX - downX
+                    let _top = ev.clientY - downY
+                    // 改變位置
+                    oBox.style.left = _left + "px"
+                    oBox.style.top  = _top + "px"
+                    // 顯示
+                    aContent[0].innerHTML = "true"
+                    aContent[1].innerHTML = _left
+                    aContent[2].innerHTML = _top
+
+                    // 將座標保存起來 (一個座標: left, top)
+                    // (屬性名:屬性值, 屬性名:屬性值)
+                    arr.push({left:_left,top:_top})
+                }
+                document.onmouseup = function(){
+                    aContent[0].innerHTML = "false"
+                    document.onmousemove = document.onmouseup = null
+                }
+            }
+            oBack.onclick = function(){
+                // 從後往前
+                let index = arr.length-1
+                let timer = setInterval(function(){
+                    oBox.style.left = arr[index].left + "px"
+                    oBox.style.top = arr[index].top + "px"
+                    // 顯示
+                    aContent[1].innerHTML = arr[index].left
+                    aContent[2].innerHTML = arr[index].top
+                    index--
+                    if(index < 0){
+                        clearInterval(timer)
+                        arr = []
+                    }
+                },10)
+            }
+        }   
+    </script>
+</body>
+</html>
