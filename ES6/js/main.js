@@ -1,7 +1,21 @@
 // http://es6-features.org/#Constants ES6所有範例
 
+// Console.assert(assertion, obj1, obj2, /* …, */ objN)
+
+// structuredClone(value, options) 深層複製新語法
+
+// Number.parseInt(string, ?radix) radix為可選 2 到 36 之間整數，表示幾進位，默認 10 進制，以0x開頭則為 16 進制
+// Number.parseFloat(string) string: 要解析的值，會被強制轉換為字串。此參數開頭的空白會被忽略，若第一個非空白字元不能被轉換為數字，return NaN
+// Number.isInteger() 靜態方法判斷傳入值是否為整數。
+// Number.isNaN() 靜態方法判斷傳入的值是否為 NaN，如果輸入不是數字類型，則傳回 false。它是全域 isNaN() 函數更健壯的版本。
+
+
+// Object.assign(target, ...sources) !淺層複製 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件。回傳的值為該目標物件。
+// Object.keys(obj) 方法會回傳一個由指定物件所有可列舉之屬性組成的陣列，
+// Object.getOwnPropertyDescriptor(obj, prop) 能取得obj物件中，prop屬性的屬性描述器(如 configurable: boolean，定義屬性是否可被刪除，writable: boolean，定義值是否可變，若為false就是唯讀。)
+
 // Array.prototype.map: 會建立一個新的陣列，其內容為原陣列的每一個元素經由回呼(CallBack)函式運算後所回傳的結果之集合。 //要回傳值
-// Array.prototype.foreach: 會將陣列內的每個元素，皆傳入並執行給定的函式一次。 //並沒有回傳值
+// Array.prototype.forEach: 會將陣列內的每個元素，皆傳入並執行給定的函式一次。 //並沒有回傳值。類陣列(如functions內的arguments)無法使用，forEach不能被中斷，所以需要中斷的迴圈用for比較合適。
 // Array.prototype.concat() 方法被用來合併兩個或多個陣列。此方法不會改變現有的陣列，回傳一個包含呼叫者陣列本身的值，作為代替的是回傳一個新陣列。
 // Array.prototype.includes() 方法會判斷陣列是否包含特定的元素，並以此來回傳 true 或 false。
 // Array.prototype.filter() 方法會建立一個經指定之函式運算後，由原陣列中通過該函式檢驗之元素所構成的新陣列。
@@ -19,27 +33,305 @@
 // String.prototype.trim() 方法會移除字串起始及結尾處的空白字元。 本文中的空白字元指所有空格字元（如：空格、欄標、無間斷空格等等）及換行字元（如：換行、回車等等）。
 // Array.prototype.every() 方法會測試陣列中的所有元素是否都通過了由給定之函式所實作的測試。
 
+// #Regex
+{
+  // ##regex建立方式
+  {
+    // let regex1 = /ab*c/ //正規表達式字面值在 script 載入時會被編譯，當正規表達式為定值時，使用此方法可獲得較佳效能。
+
+    // let regexString = "ab*c" //
+    // let regex2 = new RegExp(regexString) //使用建構子函數供即時編譯正則表達式，當模式會異動、事先未知匹配模式、或者你將從其他地方取得時，使用建構子函數將較為合適。
+  }
+  // ##String的方法: .match(regex)
+  {
+    // const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
+    // const regex = /[A-Z]/g;
+    // const found = paragraph.match(regex);
+
+    // console.log(found);
+    // Expected output: Array ["T", "I"]
+  }
+
+  // ##Regex的方法: .test
+  {
+    // let regex = /ab*c/
+    // console.log(regex.test("ac")) //true
+  }
+}
+
+// #Console.assert
+{
+  // const errorMsg = "the # is not even";
+  // for (let number = 2; number <= 5; number += 1) {
+  //   console.log("the # is " + number);
+  //   console.assert(number % 2 === 0, { number: number, errorMsg: errorMsg });
+  //   // or, using ES2015 object property shorthand:
+  //   // console.assert(number % 2 === 0, {number, errorMsg});
+  // }
+  // output:
+  // the # is 2
+  // the # is 3
+  // Assertion failed: {number: 3, errorMsg: "the # is not even"}
+  // the # is 4
+  // the # is 5
+  // Assertion failed: {number: 5, errorMsg: "the # is not even"}
+}
+
+// #深層複製
+{
+  // ##更簡單的方法JSON.parse(JSON.stringfy(obj))，但Date會變成字串、正規表達式會消失變成一個Object。
+  {
+    // let arr = [1, [1], new Date(), /ab*c/]
+    // let copyArr = JSON.parse(JSON.stringify(arr))
+    // console.log(copyArr) // [1,[1],"2024-06-20T01:08:07.929Z",{}]
+  }
+
+  // ##structuredClone
+  {
+    // Create an object with a value and a circular reference to itself.
+    //   const original = { name: "MDN" };
+    //   original.itself = original;
+
+    // Clone it
+    //   const clone = structuredClone(original);
+
+    //   console.assert(clone !== original); // the objects are not the same (not same identity)
+    //   console.assert(clone.name === "MDN"); // they do have the same values
+    //   console.assert(clone.itself === clone); // and the circular reference is preserved
+  }
+
+}
+
+// 資料結構 Stack, Queue, Linked List, Map, Set
+{
+  {
+    // Stack 堆疊是一種遵循後進先出（LIFO，Last In First Out）原則的數據結構。你只能從堆疊的頂端添加或移除元素。
+    // 用於撤銷操作(如文本編輯器中的撤銷功能)、表達式求值和語法解析、函數調用堆疊(如遞歸)
+
+    // class Stack {
+    //   constructor() {
+    //     this.items = [];
+    //   }
+
+    //   push(element) {
+    //     this.items.push(element);
+    //   }
+
+    //   pop() {
+    //     if (this.isEmpty()) {
+    //       return "Stack is empty";
+    //     }
+    //     return this.items.pop();
+    //   }
+
+    //   peek() {
+    //     return this.items[this.items.length - 1];
+    //   }
+
+    //   isEmpty() {
+    //     return this.items.length === 0;
+    //   }
+
+    //   size() {
+    //     return this.items.length;
+    //   }
+    // }
+
+    // // 使用範例
+    // let stack = new Stack();
+    // stack.push(1);
+    // stack.push(2);
+    // console.log(stack.pop()); // 2
+    // console.log(stack.peek()); // 1
+  }
+  {
+    // Queue 隊列是一種遵循先進先出（FIFO，First In First Out）原則的數據結構。你只能從隊列的前端移除元素，從後端添加元素。
+    // 用途: 排隊系統(如打印隊列、操作系統的任務調度)、廣度優先搜索(BFS)
+
+    // class Queue {
+    //   constructor() {
+    //     this.items = [];
+    //   }
+
+    //   enqueue(element) {
+    //     this.items.push(element);
+    //   }
+
+    //   dequeue() {
+    //     if (this.isEmpty()) {
+    //       return "Queue is empty";
+    //     }
+    //     return this.items.shift();
+    //   }
+
+    //   front() {
+    //     if (this.isEmpty()) {
+    //       return "Queue is empty";
+    //     }
+    //     return this.items[0];
+    //   }
+
+    //   isEmpty() {
+    //     return this.items.length === 0;
+    //   }
+
+    //   size() {
+    //     return this.items.length;
+    //   }
+    // }
+
+    // // 使用範例
+    // let queue = new Queue();
+    // queue.enqueue(3);
+    // queue.enqueue(4);
+    // console.log(queue.dequeue());
+    // console.log(queue.front());
+  }
+  {
+    // Linked List 鏈表是一種線性數據結構，其中每個元素都是一個獨立的對象，每個對象包含一個值和一個指向下一個元素的指針。
+    // 用於 動態數據集合、實現其他數據結構(如堆棧和隊列)、遍歷數據
+
+    // class Node {
+    //   constructor(value) {
+    //     this.value = value;
+    //     this.next = null;
+    //   }
+    // }
+
+    // class LinkedList {
+    //   constructor() {
+    //     this.head = null;
+    //     this.size = 0;
+    //   }
+
+    //   add(value) {
+    //     let newNode = new Node(value);
+    //     if (this.head === null) {
+    //       this.head = newNode;
+    //     } else {
+    //       let current = this.head;
+    //       while (current.next !== null) {
+    //         current = current.next;
+    //       }
+    //       current.next = newNode;
+    //     }
+    //     this.size++;
+    //   }
+
+    //   remove(value) {
+    //     if (this.head === null) {
+    //       return null;
+    //     }
+    //     if (this.head.value === value) {
+    //       this.head = this.head.next;
+    //       this.size--;
+    //       return value;
+    //     }
+    //     let current = this.head;
+    //     while (current.next !== null && current.next.value !== value) {
+    //       current = current.next;
+    //     }
+    //     if (current.next === null) {
+    //       return null;
+    //     }
+    //     let removedNode = current.next;
+    //     current.next = current.next.next;
+    //     this.size--;
+    //     return removedNode.value;
+    //   }
+
+    //   print() {
+    //     let current = this.head;
+    //     while (current !== null) {
+    //       console.log(current.value);
+    //       current = current.next;
+    //     }
+    //   }
+    // }
+
+    // // 使用範例
+    // let list = new LinkedList();
+    // list.add(1);
+    // list.add(3);
+    // list.remove(1);
+    // list.print(); // 2
+  }
+  {
+    // Map 是一種鍵值對的集合，其中每個鍵都是唯一的。它與普通對象的不同之處在於Map可以使用任意類型的值作為鍵。
+    // 用於字典、快速查找和檢索數據或記錄關聯數據
+
+    // let map = new Map();
+
+    // map.set('name', 'Alice');
+    // map.set('age', 25);
+
+    // console.log(map.get('name')); // Alice
+    // console.log(map.has('age')); // true
+    // map.delete('age');
+    // console.log(map.size); // 1
+  }
+  {
+    // Set是一種不包含重複元素的集合。每個值在Set中都是唯一的。
+    // 用於獲取唯一值、數據查重、數學集合操作(如交集、差集)
+
+    // let set = new Set();
+
+    // set.add(1);
+    // set.add(2);
+    // set.add(2); // 重複值不會添加
+
+    // console.log(set.has(1)); // true
+    // console.log(set.size); // 2
+    // set.delete(1);
+    // console.log(set.size); // 1
+  }
+}
+
+
 // #
 {
+  // let p = new Promise((res, rej) => {
+  //   rej({ "message": "err" })
+  // }).then((result) => {
+  //   console.log(result)
+  // }).catch((err) => {
+  //   console.log(err)
+  // })
+
+
+  // let a = {
+  //   total: 100,
+  //   get save() {
+  //     return total + "元"
+  //   },
+  //   gett: () => {
+
+  //   }
+  // }
+
+  // console.dir(a)
+  // const d = Object.getOwnPropertyDescriptor(a, "total")
+  // console.log(d)
+
   // console.dir(Promise);
-  const p = new Promise((resolve, reject) => {
-    reject("fail");
-  });
-  console.dir(p);
-  console.log(
-    p
-      .then(
-        (success) => {
-          console.log(success);
-        },
-        (fail) => {
-          console.log(fail, "1");
-        }
-      )
-      .catch((error) => {
-        console.log(error);
-      })
-  );
+  // const p = new Promise((resolve, reject) => {
+  //   reject("fail");
+  // });
+  // console.dir(p);
+  // console.log(
+  //   p
+  //     .then(
+  //       (success) => {
+  //         console.log(success);
+  //       },
+  //       (fail) => {
+  //         console.log(fail, "1");
+  //       }
+  //     )
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  // );
 }
 
 // #Call Stack, Event Queue
@@ -317,9 +609,9 @@
   // }
 }
 
-// #call、apply、bind
+// #call, apply, bind
 {
-  // call、apply、bind都可以傳入一個物件改變this的指向，主要差異在使用方法不同。
+  // call、apply、bind都可以傳入一個物件改變this的指向，主要差異在使用方法不同。!!箭頭函式用這些方法會沒有用，因沒有自己的this
   // let Jay = {
   //   name: "杰",
   // };
@@ -331,7 +623,7 @@
   // }
   // callName("a", "b");
   // callName.call(Jay, "你好", "再見!"); // call是以,隔開
-  // callName.apply(Mei, ["你好", "再見!"]); // apply是以一個[]包起來傳入
+  // callName.apply(Mei, ["你好"], "再見!"); // apply是以一個[]包起來傳入
   // let newCallName = callName.bind(Jay, "你好", "再見!"); //bind也是用,隔開
   // newCallName();
 }

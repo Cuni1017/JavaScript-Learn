@@ -1,3 +1,8 @@
+let timeOut = () => {
+  setTimeout(() => {
+    console.log("setTimeout")
+  }, 0)
+}
 let step1 = () => {
   console.log("step1 start");
   return new Promise((resolve, reject) => {
@@ -8,7 +13,7 @@ let step1 = () => {
       } else {
         reject("step1 reject");
       }
-    }, 300);
+    }, 100);
   });
 };
 let step2 = () => {
@@ -52,21 +57,68 @@ let step4 = () => {
 };
 
 const run = () => {
-  Promise.all([step1(), step2()])
-    .then(
-      (result) => {
-        console.log(result);
-        return step3();
-      },
-      (result) => {
-        console.log(result);
-      }
-    )
-    .then(() => {
-      return Promise.all([step3(), step4()]);
-    })
-    .then(() => {
-      return step4();
-    });
+  // Promise.race([step1(), step2()])
+  //   .then((res) => { console.log(res) })
+  //   .catch((err) => { console.log(err) })
+
+  // timeOut()
+  // Promise.all([step1(), step2()])
+  //   .then(
+  //     (result) => {
+  //       console.log(result);
+  //       return step3();
+  //     }
+  //   )
+  //   .then(() => {
+  //     return Promise.all([step3(), step4()]);
+  //   })
+  //   .then(() => {
+  //     return step4();
+  //   }).catch((err) => {
+  //     console.log("err", err)
+  //   });
 };
 run();
+
+// await
+// (async () => {
+//   try {
+//     let res = await new Promise((res, rej) => {
+//       setTimeout(() => {
+//         rej("fail")
+//       }, 0)
+//     })
+//     console.log(res)
+
+//   } catch (err) {
+//     console.log("fail", err)
+//   }
+
+// })()
+
+console.log('Start');
+setTimeout(() => {
+  console.log('Timeout 1');
+}, 0);
+
+
+setTimeout(() => {
+  console.log('Timeout 2');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise 1');
+});
+
+// console.log('End');
+
+// function checkNum(num) {
+//   return new Promise((res, rej) => {
+//     num ? res("true") : rej("false")
+//   })
+// }
+
+// let p = async function PromiseFn() {
+//   return await checkNum(1)
+// }
+// console.dir(p())
