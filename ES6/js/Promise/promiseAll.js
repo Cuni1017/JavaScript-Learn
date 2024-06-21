@@ -56,6 +56,7 @@ let step4 = () => {
   });
 };
 
+
 const run = () => {
   // Promise.race([step1(), step2()])
   //   .then((res) => { console.log(res) })

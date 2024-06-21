@@ -2,13 +2,16 @@
 
 // Console.assert(assertion, obj1, obj2, /* …, */ objN)
 
-// structuredClone(value, options) 深層複製新語法
+// Math.random() 回傳0~1之間，包含0，不包含1
+
+// structuredClone(value, options) 2022 深層複製新語法 Edge Chrome FireFox Safari支援
 
 // Number.parseInt(string, ?radix) radix為可選 2 到 36 之間整數，表示幾進位，默認 10 進制，以0x開頭則為 16 進制
 // Number.parseFloat(string) string: 要解析的值，會被強制轉換為字串。此參數開頭的空白會被忽略，若第一個非空白字元不能被轉換為數字，return NaN
 // Number.isInteger() 靜態方法判斷傳入值是否為整數。
 // Number.isNaN() 靜態方法判斷傳入的值是否為 NaN，如果輸入不是數字類型，則傳回 false。它是全域 isNaN() 函數更健壯的版本。
 
+// String.prototype.trim() 方法會移除字串起始及結尾處的空白字元。 本文中的空白字元指所有空格字元（如：空格、欄標、無間斷空格等等）及換行字元（如：換行、回車等等）。
 
 // Object.assign(target, ...sources) !淺層複製 被用來複製一個或多個物件自身所有可數的屬性到另一個目標物件。回傳的值為該目標物件。
 // Object.keys(obj) 方法會回傳一個由指定物件所有可列舉之屬性組成的陣列，
@@ -25,13 +28,53 @@
 // Array.prototype.shift() 方法會移除並回傳陣列的第一個元素。此方法會改變陣列的長度。
 // Array.prototype.slice() 方法會回傳一個新陣列物件，為原陣列選擇之 begin 至 end（不含 end）部分的淺拷貝（shallow copy）。而原本的陣列將不會被修改。
 // Array.prototype.splice() 方法可以藉由刪除既有元素並／或加入新元素來改變一個陣列的內容。
-// Math.random() 回傳0~1之間，包含0，不包含1
-// Event.preventDefault() 如果事件可以被取消，就取消事件（即取消事件的預設行為）。但不會影響事件的傳遞，事件仍會繼續傳遞。
 // Array.prototype.sort() 方法會 *原地（in place）* 對一個陣列的所有元素進行排序，並回傳此陣列。排序不一定是穩定的（stable）。預設的排序順序是根據字串的 Unicode 編碼位置（code points）而定。
 // Array.prototype.indexOf() 方法會回傳給定元素於陣列中第一個被找到之索引，若不存在於陣列中則回傳 -1。
 // Array.prototype.fill() 方法會將陣列中索引的第一個到最後一個的每個位置全部填入一個靜態的值。
-// String.prototype.trim() 方法會移除字串起始及結尾處的空白字元。 本文中的空白字元指所有空格字元（如：空格、欄標、無間斷空格等等）及換行字元（如：換行、回車等等）。
 // Array.prototype.every() 方法會測試陣列中的所有元素是否都通過了由給定之函式所實作的測試。
+
+// Promise.allSettled([promise1,promise2...]) 回傳一個Promise內含有所有[]裡面的結果，不管成功與否
+
+// Event.preventDefault() 如果事件可以被取消，就取消事件（即取消事件的預設行為）。但不會影響事件的傳遞，事件仍會繼續傳遞。
+
+// #Promise.allSettled() 
+{
+  // 定義三個 API 調用函數，返回 Promise
+  function callApi1() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('API 1 response');
+      }, 1000);
+    });
+  }
+
+  function callApi2() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('API 2 error');
+      }, 1500);
+    });
+  }
+
+  function callApi3() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('API 3 response');
+      }, 2000);
+    });
+  }
+
+  // 使用 Promise.allSettled() 執行三個 API 調用
+  Promise.allSettled([callApi1(), callApi2(), callApi3()])
+    .then(results => {
+      // 過濾成功的結果
+      const successfulResponses = results
+        .filter(result => result.status === 'fulfilled')
+        .map(result => result.value);
+
+      console.log('Successful API responses:', successfulResponses);
+    });
+}
 
 // #Regex
 {

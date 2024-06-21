@@ -22,6 +22,7 @@ const step1 = (data, resolve, reject) => {
 //     }
 //   }, 200);
 // };
+
 const step3 = (resolve, reject) => {
   setTimeout(() => {
     console.log("step3");
